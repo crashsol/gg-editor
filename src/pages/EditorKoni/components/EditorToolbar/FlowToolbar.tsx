@@ -3,6 +3,7 @@ import React from 'react';
 import { Toolbar } from 'gg-editor';
 import ToolbarButton from './ToolbarButton';
 import styles from './index.less';
+import Save from './SaveBtn'
 
 const FlowToolbar = () => (
   <Toolbar className={styles.toolbar}>
@@ -24,6 +25,7 @@ const FlowToolbar = () => (
     <ToolbarButton command="multiSelect" icon="multi-select" text="Multi Select" />
     <ToolbarButton command="addGroup" icon="group" text="Add Group" />
     <ToolbarButton command="unGroup" icon="ungroup" text="Ungroup" />
+    <Save />
   </Toolbar>
 );
 

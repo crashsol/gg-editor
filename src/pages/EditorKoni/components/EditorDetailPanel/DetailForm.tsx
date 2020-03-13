@@ -10,10 +10,10 @@ const { Option } = Select;
 
 const inlineFormItemLayout = {
   labelCol: {
-    sm: { span: 8 },
+    sm: { span: 6 },
   },
   wrapperCol: {
-    sm: { span: 16 },
+    sm: { span: 18 },
   },
 };
 
@@ -54,10 +54,9 @@ class DetailForm extends React.Component<DetailFormProps> {
 
   renderNodeDetail = () => {
     const { label } = this.item.getModel();
-
     return (
       <Form initialValues={{ label }}>
-        <Item label="Label" name="label" {...inlineFormItemLayout}>
+        <Item label="名称" name="name" {...inlineFormItemLayout}>
           <Input onBlur={this.handleInputBlur('label')} />
         </Item>
       </Form>
