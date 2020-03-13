@@ -64,19 +64,21 @@ class DetailForm extends React.Component<DetailFormProps> {
   };
 
   renderEdgeDetail = () => {
-    const { label = '', shape = 'flow-smooth' } = this.item.getModel();
+    const { label = '', outPort = '', inPort = '', desc = '' } = this.item.getModel();
 
     return (
-      <Form initialValues={{ label, shape }}>
-        <Item label="Label" name="label" {...inlineFormItemLayout}>
+      <Form initialValues={{ label, outPort, inPort }}>
+        <Item label="名称" name="label" {...inlineFormItemLayout}>
           <Input onBlur={this.handleInputBlur('label')} />
         </Item>
-        <Item label="Shape" name="shape" {...inlineFormItemLayout}>
-          <Select onChange={value => this.handleFieldChange({ shape: value })}>
-            <Option value="flow-smooth">Smooth</Option>
-            <Option value="flow-polyline">Polyline</Option>
-            <Option value="flow-polyline-round">Polyline Round</Option>
-          </Select>
+        <Item label="端口号(出)" name='outPort' {...inlineFormItemLayout}  >
+          <Input onBlur={this.handleInputBlur('outPort')} />
+        </Item>
+        <Item label="端口号(入)" name='inPort' {...inlineFormItemLayout}  >
+          <Input onBlur={this.handleInputBlur('inPort')} />
+        </Item>
+        <Item label="备注" name='desc' {...inlineFormItemLayout}  >
+          <Input onBlur={this.handleInputBlur('desc')} />
         </Item>
       </Form>
     );
@@ -84,7 +86,6 @@ class DetailForm extends React.Component<DetailFormProps> {
 
   renderGroupDetail = () => {
     const { label = '新建分组' } = this.item.getModel();
-
     return (
       <Form initialValues={{ label }}>
         <Item label="Label" name="label" {...inlineFormItemLayout}>
