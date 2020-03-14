@@ -3,14 +3,13 @@ import { RegisterNode } from "gg-editor";
 
 class CustomNode extends React.Component {
   render() {
-    const config = {
-      draw(item) {
-        const keyShape = this.drawKeyShape(item);
+    const config: any = {
+      draw(item: any) {
 
         // 绘制图标
         const group = item.getGraphicGroup();
         const model = item.getModel();
-
+        const keyShape = this.drawKeyShape(item);
         group.addShape("image", {
           attrs: {
             x: -15,
@@ -20,21 +19,20 @@ class CustomNode extends React.Component {
             img: model.icon
           }
         });
-
         // 绘制标签
         this.drawLabel(item);
-
         return keyShape;
       },
       anchor: [
         [0.5, 0], // 上边中点
         [0.5, 1] // 底边中点
       ]
-    };
 
+    };
     return (
-      <RegisterNode name="custom-node" config={config} extend={"flow-circle"} />
+      <RegisterNode name="custom-node" config={config} extend={'flow-rect'} />
     );
+
   }
 }
 

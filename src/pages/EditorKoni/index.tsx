@@ -7,7 +7,8 @@ import { KoniDetailPanel } from './components/EditorDetailPanel';
 import { KoniItemPanel } from './components/EditorItemPanel';
 import { KoniToolbar } from './components/EditorToolbar';
 import styles from './index.less';
-import CustomNode from './components/EditorItemPanel/CustomerNode';
+import CustomNode from './components/CustomerEditor/CustomerNode';
+import CustomEdge from './components/CustomerEditor/CustomerEdge';
 
 GGEditor.setTrackable(false);
 
@@ -36,14 +37,20 @@ export default () => (
         </Col>
         <Col span={16} className={styles.editorContent}>
           <Koni grid={grid}
+            graph={{
+              defaultEdge: {
+                shape: 'flow-polyline-round'
+              },
+            }}
             className={styles.koni} />
+          <CustomNode />
+          <CustomEdge />
         </Col>
         <Col span={6} className={styles.editorSidebar}>
           <KoniDetailPanel />
           <EditorMinimap />
         </Col>
       </Row>
-      <CustomNode />
       <KoniContextMenu />
     </GGEditor>
   </>

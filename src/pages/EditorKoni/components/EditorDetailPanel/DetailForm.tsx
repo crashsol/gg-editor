@@ -64,10 +64,10 @@ class DetailForm extends React.Component<DetailFormProps> {
   };
 
   renderEdgeDetail = () => {
-    const { label = '', outPort = '', inPort = '', desc = '' } = this.item.getModel();
+    const { label = '', outPort = '', inPort = '', shape = 'Polyline Round', desc = '' } = this.item.getModel();
 
     return (
-      <Form initialValues={{ label, outPort, inPort }}>
+      <Form initialValues={{ label, outPort, inPort, desc, shape }}>
         <Item label="名称" name="label" {...inlineFormItemLayout}>
           <Input onBlur={this.handleInputBlur('label')} />
         </Item>
@@ -79,6 +79,13 @@ class DetailForm extends React.Component<DetailFormProps> {
         </Item>
         <Item label="备注" name='desc' {...inlineFormItemLayout}  >
           <Input onBlur={this.handleInputBlur('desc')} />
+        </Item>
+        <Item label="Shape" name="shape" {...inlineFormItemLayout}>
+          <Select onChange={value => this.handleFieldChange({ shape: value })}>
+            <Option value="flow-smooth">Smooth</Option>
+            <Option value="flow-polyline">Polyline</Option>
+            <Option value="flow-polyline-round">Polyline Round</Option>
+          </Select>
         </Item>
       </Form>
     );
@@ -111,4 +118,4 @@ class DetailForm extends React.Component<DetailFormProps> {
   }
 }
 
-export default withPropsAPI(DetailForm as any);
+export default withPropsAPI(DetailForm);
