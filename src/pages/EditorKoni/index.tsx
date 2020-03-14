@@ -11,7 +11,6 @@ import CustomNode from './components/CustomerEditor/CustomerNode';
 import CustomEdge from './components/CustomerEditor/CustomerEdge';
 
 GGEditor.setTrackable(false);
-
 //添加布局悲剧
 const grid = {
   cell: 20,
@@ -37,14 +36,9 @@ export default () => (
         </Col>
         <Col span={16} className={styles.editorContent}>
           <Koni grid={grid}
-            graph={{
-              defaultEdge: {
-                shape: 'flow-polyline-round'
-              },
-            }}
+            data={data}
             className={styles.koni} />
-          <CustomNode />
-          <CustomEdge />
+
         </Col>
         <Col span={6} className={styles.editorSidebar}>
           <KoniDetailPanel />
@@ -52,6 +46,8 @@ export default () => (
         </Col>
       </Row>
       <KoniContextMenu />
+      <CustomNode />
+      <CustomEdge />
     </GGEditor>
   </>
 );

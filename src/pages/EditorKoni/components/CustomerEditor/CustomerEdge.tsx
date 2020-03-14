@@ -7,17 +7,12 @@ class CustomEdge extends React.Component {
       getStyle(item: any) {
         const model = item.getModel();
         const { color, size } = model;
-
-        console.log(model)
         return {
           stroke: color || "#A3B1BF",
-          lineWidth: size || 5,
-          startArrow: false,
-          endArrow: false,
+          lineWidth: size || 5
         };
       }
     };
-
     return (
       <RegisterEdge name="custom-edge" config={config} extend={"flow-smooth"} />
     );
